@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_51" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Farfalle</string>
+    </void>
+    <void property="preco">
+     <int>18</int>
+    </void>
+    <void property="quantidade">
+     <int>100</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Fettuccine</string>
+    </void>
+    <void property="preco">
+     <int>18</int>
+    </void>
+    <void property="quantidade">
+     <int>100</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Spaghetti</string>
+    </void>
+    <void property="preco">
+     <int>17</int>
+    </void>
+    <void property="quantidade">
+     <int>100</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Penne</string>
+    </void>
+    <void property="preco">
+     <int>17</int>
+    </void>
+    <void property="quantidade">
+     <int>100</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Ravioli de Queijo com Presunto</string>
+    </void>
+    <void property="preco">
+     <int>24</int>
+    </void>
+    <void property="quantidade">
+     <int>100</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Ravioli de Ricota</string>
+    </void>
+    <void property="preco">
+     <int>22</int>
+    </void>
+    <void property="quantidade">
+     <int>100</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Ravioli de Tomate Seco</string>
+    </void>
+    <void property="preco">
+     <int>24</int>
+    </void>
+    <void property="quantidade">
+     <int>100</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Ravioli de Gorgonzola</string>
+    </void>
+    <void property="preco">
+     <int>25</int>
+    </void>
+    <void property="quantidade">
+     <int>100</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Gnocchi</string>
+    </void>
+    <void property="preco">
+     <int>20</int>
+    </void>
+    <void property="quantidade">
+     <int>100</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Cappelletti de Carne</string>
+    </void>
+    <void property="preco">
+     <int>20</int>
+    </void>
+    <void property="quantidade">
+     <int>100</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Cappelletti de Frango</string>
+    </void>
+    <void property="preco">
+     <int>20</int>
+    </void>
+    <void property="quantidade">
+     <int>100</int>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

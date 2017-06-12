@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_51" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Almôndega</string>
+    </void>
+    <void property="preco">
+     <int>6</int>
+    </void>
+    <void property="quantidade">
+     <int>35</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Frango à Parmegiana</string>
+    </void>
+    <void property="preco">
+     <int>7</int>
+    </void>
+    <void property="quantidade">
+     <int>35</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Frango Dourado</string>
+    </void>
+    <void property="preco">
+     <int>5</int>
+    </void>
+    <void property="quantidade">
+     <int>35</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Peito de Peru</string>
+    </void>
+    <void property="preco">
+     <int>4</int>
+    </void>
+    <void property="quantidade">
+     <int>35</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Produto">
+    <void property="nome">
+     <string>Polpetone</string>
+    </void>
+    <void property="preco">
+     <int>8</int>
+    </void>
+    <void property="quantidade">
+     <int>35</int>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
