@@ -7,6 +7,7 @@ import Model.Bebida;
 import Model.Molho;
 import Model.Prato_Favorito;
 import Model.Prato_Promocao;
+import Model.Produto;
 import Model.Produto_Extra;
 import Model.Produto_Ingrediente;
 import Model.Produto_Massa;
@@ -28,147 +29,50 @@ public class TelaVisualizarEstoque extends javax.swing.JFrame {
     private TelaEstoque estoque;
     private boolean reposicao = false;
     private ArrayList produto = new ArrayList();
-    
-    public void AdicionaEstoque(String nomes) throws ClassNotFoundException{
-        
-        ProdutoDAO persistencia = new ProdutoDAO();
+    ProdutoDAO persistencia = new ProdutoDAO();
                 
+    public void exibeLista(String nomes){
+        ArrayList<Produto> produto = new ArrayList<Produto>();
         modeloEstoque.clear();
-
-        if(nomes.equals("Bebida.xml")){
-            Bebida bebida = new Bebida();
-            try {
-                bebida.setIdBebida(persistencia.consultarProdutoTipo("bebida"));
+        if(nomes.equals("Pratos Promoção")){
+            nomes = "promocao";
+        }
+        nomes = nomes.toLowerCase();
+        try {
+                produto = persistencia.consultarProdutoTipo(nomes);
             } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
                 Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
             }
-            for(int i = 0 ; i<bebida.getIdBebida().size();i++){
-                modeloEstoque.addElement(bebida.getIdBebida().get(i).getNome()
-                        + " ------ " + bebida.getIdBebida().get(i).getQuantidade());
+        for(int i = 0 ; i<produto.size();i++){
+                modeloEstoque.addElement(produto.get(i).getNome()
+                        + " ------ " + produto.get(i).getQuantidade());
             }
-            if(isReposicao() == true){
-                setReposicao(false);
-                persistencia.atualizarQuantidadeProduto("bebida");
-            }
-            
-            
-        }
-         if(nomes.equals("Molho.xml")){
-            Molho molho= new Molho();
-            try {
-                molho.setMolho(persistencia.consultarProdutoTipo("molho"));
-            } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
-                Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            for(int i = 0 ; i<molho.getMolho().size();i++){
-                modeloEstoque.addElement(molho.getMolho().get(i).getNome()
-                        + " ------ " + molho.getMolho().get(i).getQuantidade());
-            }
-            if(isReposicao() == true){
-               persistencia.atualizarQuantidadeProduto("molho");
-                setReposicao(false);
-               
-            }
-            
-        }
-          if(nomes.equals("Favorito.xml")){
-            Prato_Favorito favorito= new Prato_Favorito();
-            try {
-                favorito.setfavorito(persistencia.consultarProdutoTipo("favorito"));
-            } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
-                Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            for(int i = 0 ; i<favorito.getFavorito().size();i++){
-                modeloEstoque.addElement(favorito.getFavorito().get(i).getNome()
-                        + " ------ " + favorito.getFavorito().get(i).getQuantidade());
-            }
-            if(isReposicao() == true){
-              persistencia.atualizarQuantidadeProduto("favorito");
-                setReposicao(false);
-            }
-            
-        }
-           if(nomes.equals("Promocao.xml")){
-            Prato_Promocao promocao = new Prato_Promocao();
-            try {
-                promocao.setPromoc(persistencia.consultarProdutoTipo("promocao"));
-            } catch (SQLException | InstantiationException | IllegalAccessException ex) {
-                Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            for(int i = 0 ; i<promocao.getPromoc().size();i++){
-                modeloEstoque.addElement(promocao.getPromoc().get(i).getNome()
-                        + " ------ " + promocao.getPromoc().get(i).getQuantidade());
-            }
-            if(isReposicao() == true){
-                persistencia.atualizarQuantidadeProduto("bebida");
-                setReposicao(false);
-            }
-            
-        }
-            if(nomes.equals("Extra.xml")){
-               Produto_Extra extra = new Produto_Extra();
-            try {
-                extra.setProdExtra(persistencia.consultarProdutoTipo("extra"));
-            } catch (SQLException | InstantiationException | IllegalAccessException ex) {
-                Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                for(int i = 0 ; i<extra.getProdExtra().size();i++){
-                    modeloEstoque.addElement(extra.getProdExtra().get(i).getNome()
-                        + " ------ " + extra.getProdExtra().get(i).getQuantidade());
-            }
-                if(isReposicao() == true){
-                    persistencia.atualizarQuantidadeProduto("extra");
-                    setReposicao(false);
-                }
-        }
-            if(nomes.equals("Ingrediente.xml")){
-                Produto_Ingrediente ingrediente = new Produto_Ingrediente();
-            try {
-                ingrediente.setIdIngrediente(persistencia.consultarProdutoTipo("ingrediente"));
-            } catch (SQLException | InstantiationException | IllegalAccessException ex) {
-                Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                for(int i = 0 ; i<ingrediente.getIdIngrediente().size();i++){
-                    modeloEstoque.addElement(ingrediente.getIdIngrediente().get(i).getNome()
-                            + " ------ " + ingrediente.getIdIngrediente().get(i).getQuantidade());
-            }
-                if(isReposicao() == true){
-                    persistencia.atualizarQuantidadeProduto("ingrediente");
-                    setReposicao(false);
-            }
-            if(nomes.equals("Massa.xml")){
-                Produto_Massa massa = new Produto_Massa();
-                    try {
-                        massa.setIdMassa(persistencia.consultarProdutoTipo("massa"));
-                    } catch (SQLException | InstantiationException | IllegalAccessException ex) {
-                        Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                for(int i = 0 ; i<massa.getIdMassa().size();i++){
-                modeloEstoque.addElement(massa.getIdMassa().get(i).getNome()
-                        + " ------ " + massa.getIdMassa().get(i).getQuantidade());
-                
-            }
-                if(isReposicao() == true){
-                    persistencia.atualizarQuantidadeProduto("massa");
-                    setReposicao(false);
-                }   
-        }
-        }
-            
     }
+    public void repoeEstoque(String nomes){
+        if(nomes.equals("Pratos Promoção")){
+            nomes = "promocao";
+        }
+        nomes = nomes.toLowerCase();
+        if(isReposicao() == true){
+            try {
+                persistencia.atualizarQuantidadeProduto(nomes);
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+                Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            setReposicao(false);
+            modeloEstoque.clear();
+            exibeLista(nomes);
+        }
+    }
+   
     public TelaVisualizarEstoque(String nome, TelaAtendente atendente, TelaEstoque estoque) {
         this.nome = nome;
         this.atendente = atendente;
         this.estoque = estoque;
         initComponents();        
-        if(nome.equals("Promocao.xml")){
-                titulo.setText("Pratos Promoção");
-        }
-        else    titulo.setText(nome.substring(0, (nome.length()-4)));
-        if(nome.equals("Massa.xml")){
-            
-        }
-        AdicionaEstoque(nome);
+        titulo.setText(nome);
+      
+        exibeLista(nome);
         listaDoEstoque.setModel(modeloEstoque);
     }
     @SuppressWarnings("unchecked")
@@ -283,7 +187,7 @@ public class TelaVisualizarEstoque extends javax.swing.JFrame {
 
     private void reporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporActionPerformed
         setReposicao(true);
-        AdicionaEstoque(nome);
+        repoeEstoque(nome);
         this.setVisible(false);
         this.setVisible(true);
         

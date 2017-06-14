@@ -5,9 +5,12 @@
  */
 package View;
 
-import Controle.Arquivos;
+import DAO.ProdutoDAO;
 import Model.Produto;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,7 +21,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
     /**
      * Creates new form TelaRelatorio
      */
-    private Arquivos arquivo = new Arquivos("relatorio.xml");
+    private ProdutoDAO persistencia = new ProdutoDAO();
     private TelaAtendente atendente;
     
     public TelaRelatorio(TelaAtendente atendente) {
@@ -28,11 +31,17 @@ public class TelaRelatorio extends javax.swing.JFrame {
     }
 
     public void exibirRelatorio(){
-        ArrayList<Produto> produtos = arquivo.lerXML();
-        for(int i = 0; i<produtos.size();i++){
-            System.out.println(produtos.get(i).getNome());
-            System.out.println(produtos.size());
+        ArrayList<Produto> produtos;
+        try {
+            produtos = persistencia.consultarProdutoNome("massa");
+             for(int i = 0; i<produtos.size();i++){
+                System.out.println(produtos.get(i).getNome());
+                System.out.println(produtos.size());
         }
+        } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(TelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }
     /**
      * This method is called from within the constructor to initialize the form.

@@ -182,46 +182,46 @@ public class TelaEstoque extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bebidasActionPerformed
-        TelaVisualizarEstoque TelaVisualizarEstoque  = new TelaVisualizarEstoque ("Bebida.xml", atendente, this);
+        TelaVisualizarEstoque TelaVisualizarEstoque  = new TelaVisualizarEstoque ("Bebida", atendente, this);
         TelaVisualizarEstoque.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_bebidasActionPerformed
 
     private void extrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extrasActionPerformed
-        TelaVisualizarEstoque TelaVisualizarEstoque  = new TelaVisualizarEstoque("Extra.xml", atendente, this);
-        TelaVisualizarEstoque .setVisible(true);
+        TelaVisualizarEstoque TelaVisualizarEstoque  = new TelaVisualizarEstoque("Extra", atendente, this);
+        TelaVisualizarEstoque.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_extrasActionPerformed
 
     private void pratoPromoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pratoPromoActionPerformed
-        TelaVisualizarEstoque TelaVisualizarEstoque  = new TelaVisualizarEstoque("Promocao.xml", atendente, this);
-        TelaVisualizarEstoque .setVisible(true);
+        TelaVisualizarEstoque TelaVisualizarEstoque  = new TelaVisualizarEstoque("Pratos Promoção", atendente, this);
+        TelaVisualizarEstoque.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_pratoPromoActionPerformed
 
     private void ingredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingredientesActionPerformed
 
-        TelaVisualizarEstoque TelaVisualizarEstoque  = new TelaVisualizarEstoque("Ingrediente.xml", atendente, this);
-        TelaVisualizarEstoque .setVisible(true);
+        TelaVisualizarEstoque TelaVisualizarEstoque  = new TelaVisualizarEstoque("Ingrediente", atendente, this);
+        TelaVisualizarEstoque.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_ingredientesActionPerformed
 
     private void molhosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_molhosActionPerformed
 
-        TelaVisualizarEstoque TelaVisualizarEstoque  = new TelaVisualizarEstoque ("Molho.xml", atendente, this);
-        TelaVisualizarEstoque .setVisible(true);
+        TelaVisualizarEstoque TelaVisualizarEstoque  = new TelaVisualizarEstoque ("Molho", atendente, this);
+        TelaVisualizarEstoque.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_molhosActionPerformed
 
     private void massaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_massaActionPerformed
 
-        TelaVisualizarEstoque TelaVisualizarEstoque  = new TelaVisualizarEstoque("Massa.xml", atendente, this);
-        TelaVisualizarEstoque .setVisible(true);
+        TelaVisualizarEstoque TelaVisualizarEstoque  = new TelaVisualizarEstoque("Massa", atendente, this);
+        TelaVisualizarEstoque.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_massaActionPerformed

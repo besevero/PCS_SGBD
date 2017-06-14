@@ -1,22 +1,21 @@
 package DAO;
 
 import Model.Produto;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author Bernardo
  */
 public class ProdutoDAO {
-    
-    private Infra con = new Infra();
-    
-    
-    public ProdutoDAO(){}
+  
+    private Infra infra = new Infra();
+    public ProdutoDAO(){}    
     /*
     * Pesquisa no banco de dados e retorna os itens com determinado nome
     */
@@ -27,10 +26,10 @@ public class ProdutoDAO {
         Produto produto = null;
         
         try{
-            con.abrirConexao();
-  
+          infra.abrirConexao();
+          
             String sql = "SELECT * FROM produto WHERE nome = ?;";
-            stmt = con.getConn().prepareStatement(sql);
+            stmt = infra.getConn().prepareStatement(sql);
             stmt.setString(1,nome);
             rs = stmt.executeQuery();
             
@@ -44,7 +43,7 @@ public class ProdutoDAO {
             }
             rs.close();
             stmt.close();
-            con.fecharConexao();
+            infra.fecharConexao();
             
         }catch(SQLException e){}
         return listaProduto;
@@ -57,12 +56,13 @@ public class ProdutoDAO {
         ResultSet rs = null;
         ArrayList listaProduto = new ArrayList<>();
         Produto produto = null;
-        
+                
         try{
-            con.abrirConexao();
-  
+       
+            infra.abrirConexao();
+         
             String sql = "SELECT * FROM produto WHERE tipo = ?;";
-            stmt = con.getConn().prepareStatement(sql);
+            stmt = infra.getConn().prepareStatement(sql);
             stmt.setString(1,tipo);
             rs = stmt.executeQuery();
             
@@ -76,7 +76,8 @@ public class ProdutoDAO {
             }
             rs.close();
             stmt.close();
-            con.fecharConexao();
+            
+            infra.fecharConexao();
             
         }catch(SQLException e){}
         return listaProduto;
@@ -84,19 +85,23 @@ public class ProdutoDAO {
     /*
       *Atualiza a quantidade de itens disponível de determinado tipo de produto
       */
-   public void atualizarQuantidadeProduto(String tipoAlterar){
+   public void atualizarQuantidadeProduto(String tipoAlterar) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
         PreparedStatement stmt = null;
         ResultSet rs = null;
+       
                 
         try{
-            con.abrirConexao();
-            String sql = "UPDATE produto SET quantidade = 50 WHERE tipo = ?";
-            stmt = con.getConn().prepareStatement(sql);
+             infra.abrirConexao();
+           
+            String sql = "UPDATE produto SET quantidade = 100 WHERE tipo = ?";
+            stmt = infra.getConn().prepareStatement(sql);
             stmt.setString(1, tipoAlterar);
             rs = stmt.executeQuery();
             rs.close();
             stmt.close();
-            con.fecharConexao();
+            
+          infra.fecharConexao();
+          
         }catch(SQLException e){}
     }
 

@@ -22,13 +22,7 @@ public class Molho extends Produto{
      public Molho(){        
          try {
             molho=persistencia.consultarProdutoTipo("molho");
-         } catch (ClassNotFoundException ex) {
-             Logger.getLogger(Molho.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (SQLException ex) {
-             Logger.getLogger(Molho.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (InstantiationException ex) {
-             Logger.getLogger(Molho.class.getName()).log(Level.SEVERE, null, ex);
-         } catch (IllegalAccessException ex) {
+         } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
              Logger.getLogger(Molho.class.getName()).log(Level.SEVERE, null, ex);
          }
      }

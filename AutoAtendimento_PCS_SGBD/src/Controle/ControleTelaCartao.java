@@ -21,7 +21,7 @@ public class ControleTelaCartao {
     private ArrayList<Pedido> pedidos = new ArrayList();
     private TelaCartao TelaCartao;
     private ArrayList<Pedido> pedidoLido;
-    private Arquivos persistencia;
+//    private Arquivos persistencia;
     private TelaAtendente atendente;
     
     
@@ -29,8 +29,8 @@ public class ControleTelaCartao {
         this.pedido = pedido;
         this.atendente = atendente;
         this.TelaCartao = TelaCartao;
-        this.persistencia = atendente.getControleAtendente().getArquivo();
-        persistencia.setEscrever(pedido.getPratos());
+      //  this.persistencia = atendente.getControleAtendente().getArquivo();
+//        persistencia.setEscrever(pedido.getPratos());
     }
     public void cancelar(){
         TelaPagamento pagamento = new TelaPagamento(pedido, atendente);
@@ -41,7 +41,7 @@ public class ControleTelaCartao {
     public boolean imprimir(String senha){
         pedidos.add(pedido);
         if(senha.equals("123")){
-            persistencia.imprimir();
+        //    persistencia.imprimir();
 
         TelaNotaFiscal TelaNotaFiscal = new TelaNotaFiscal(pedido, atendente);
         TelaNotaFiscal.setVisible(true);
@@ -54,7 +54,7 @@ public class ControleTelaCartao {
         
     }
     public void lerXML(){
-      persistencia.lerXML();
+      //persistencia.lerXML();
     }
     
 
