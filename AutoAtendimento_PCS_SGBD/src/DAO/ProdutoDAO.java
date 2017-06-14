@@ -15,13 +15,15 @@ public class ProdutoDAO {
     
     private Infra con = new Infra();
     
+    
+    public ProdutoDAO(){}
     /*
     * Pesquisa no banco de dados e retorna os itens com determinado nome
     */
-    public List consultarProdutoNome(String nome) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
+    public ArrayList consultarProdutoNome(String nome) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List listaProduto = new ArrayList<>();
+        ArrayList listaProduto = new ArrayList<>();
         Produto produto = null;
         
         try{
@@ -50,10 +52,10 @@ public class ProdutoDAO {
     /*
     * Pesquisa no banco de dados e retorna os itens com determinado tipo
     */
-      public List consultarProdutoTipo(String tipo) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
+      public ArrayList consultarProdutoTipo(String tipo) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List listaProduto = new ArrayList<>();
+        ArrayList listaProduto = new ArrayList<>();
         Produto produto = null;
         
         try{

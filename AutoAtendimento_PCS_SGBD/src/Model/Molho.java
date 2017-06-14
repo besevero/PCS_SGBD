@@ -5,8 +5,11 @@
  */
 package Model;
 
-import Controle.Arquivos;
+import DAO.ProdutoDAO;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,15 +18,19 @@ import java.util.ArrayList;
 public class Molho extends Produto{
     
      private ArrayList<Produto> molho = new ArrayList();
-    private Arquivos persistencia = new Arquivos("Molho.xml", molho);
+    private ProdutoDAO persistencia = new ProdutoDAO();
      public Molho(){        
-       /* molho.add(new Produto ("bolonhesa", 0, 30));
-        molho.add(new Produto ("4 queijos", 0, 30));
-        molho.add(new Produto ("sugo", 0, 30));
-        molho.add(new Produto ("funghi", 0,30));
-        molho.add(new Produto ("branco", 0, 30));
-        persistencia.imprimir();*/
-        molho=persistencia.lerXML();
+         try {
+            molho=persistencia.consultarProdutoTipo("molho");
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(Molho.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (SQLException ex) {
+             Logger.getLogger(Molho.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (InstantiationException ex) {
+             Logger.getLogger(Molho.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (IllegalAccessException ex) {
+             Logger.getLogger(Molho.class.getName()).log(Level.SEVERE, null, ex);
+         }
      }
     public Molho(String nome, int valor, int quantidade, String tipo) {
         super(nome, valor, quantidade, tipo);

@@ -1,12 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-import Controle.Arquivos;
+import DAO.ProdutoDAO;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,21 +13,19 @@ import java.util.ArrayList;
 public class Produto_Massa extends Produto{
 
         private ArrayList<Produto> IdMassa = new ArrayList();
-        private Arquivos persistencia = new Arquivos("Massa.xml", IdMassa);
+        private ProdutoDAO persistencia = new ProdutoDAO();
     public Produto_Massa(){
-        /*IdMassa.add(new Produto ("Farfalle", 18, 100));
-        IdMassa.add(new Produto ("Fettuccine", 18, 100));
-        IdMassa.add(new Produto ("Spaghetti", 17, 100));
-        IdMassa.add(new Produto ("Penne", 17, 100));
-        IdMassa.add(new Produto ("Ravioli de Queijo com Presunto", 24, 100));
-        IdMassa.add(new Produto ("Ravioli de Ricota", 22, 100));
-        IdMassa.add(new Produto ("Ravioli de Tomate Seco", 24, 100));
-        IdMassa.add(new Produto ("Ravioli de Gorgonzola", 25, 100));
-        IdMassa.add(new Produto ("Gnocchi", 20, 100));
-        IdMassa.add(new Produto ("Cappelletti de Carne", 20, 100));
-        IdMassa.add(new Produto ("Cappelletti de Frango", 20, 100));
-        persistencia.imprimir();*/
-        IdMassa = persistencia.lerXML();
+            try {
+                IdMassa = persistencia.consultarProdutoTipo("massa");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Produto_Massa.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Produto_Massa.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(Produto_Massa.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(Produto_Massa.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     
     public Produto_Massa(String nome, int valor, int quantidade, String tipo) {

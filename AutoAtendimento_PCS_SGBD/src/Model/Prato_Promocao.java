@@ -1,25 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-import Controle.Arquivos;
+import DAO.ProdutoDAO;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Prato_Promocao extends Produto{
     
      private ArrayList<Produto> promoc = new ArrayList();
-     private Arquivos persistencia = new Arquivos("Promocao.xml", promoc);
+     private ProdutoDAO persistencia = new ProdutoDAO();
     
     public Prato_Promocao(){
-      /*promoc.add(new Produto ("Penne a Carbonara", 15, 30));
-      promoc.add(new Produto ("Spaghetti alho e oleo", 15, 30));
-      
-      persistencia.imprimir();*/
-      promoc=persistencia.lerXML();
+         try {
+             promoc=persistencia.consultarProdutoTipo("favorito");
+                     
+                     } catch (ClassNotFoundException ex) {
+             Logger.getLogger(Prato_Promocao.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (SQLException ex) {
+             Logger.getLogger(Prato_Promocao.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (InstantiationException ex) {
+             Logger.getLogger(Prato_Promocao.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (IllegalAccessException ex) {
+             Logger.getLogger(Prato_Promocao.class.getName()).log(Level.SEVERE, null, ex);
+         }
 
     }
     
