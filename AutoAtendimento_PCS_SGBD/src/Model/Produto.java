@@ -21,10 +21,11 @@ public class Produto implements Serializable{
         
     }
     
-    public Produto(String nome, int valor, int quantidade) {
+    public Produto(String nome, int valor, int quantidade, String tipo) {
         this.nome = nome;
         this.preco = valor;
         this.quantidade= quantidade;
+        this.tipo = tipo;
     }
 
     public String getNome() {

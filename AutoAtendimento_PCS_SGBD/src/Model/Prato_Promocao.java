@@ -23,8 +23,8 @@ public class Prato_Promocao extends Produto{
 
     }
     
-    public Prato_Promocao(String nome, int valor, int quantidade) {
-        super(nome, valor, quantidade);
+    public Prato_Promocao(String nome, int valor, int quantidade, String tipo) {
+        super(nome, valor, quantidade, tipo);
     }
     
     

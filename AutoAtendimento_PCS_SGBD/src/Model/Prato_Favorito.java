@@ -13,8 +13,9 @@ public class Prato_Favorito extends Produto{
     
      private ArrayList<Produto> favorito = new ArrayList();
      private Arquivos persistencia = new Arquivos("Favorito.xml", favorito);
-    public Prato_Favorito(String nome, int valor, int quantidade, ArrayList<Produto> promoc) {
-        super(nome, valor, quantidade);
+    public Prato_Favorito(String nome, int valor, int quantidade, ArrayList<Produto> promoc,
+            String tipo) {
+        super(nome, valor, quantidade, tipo);
         this.favorito = favorito;
     
     }

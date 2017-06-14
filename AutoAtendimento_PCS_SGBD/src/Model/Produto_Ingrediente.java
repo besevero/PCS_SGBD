@@ -51,8 +51,8 @@ public class Produto_Ingrediente extends Produto{
     }
      
     public Produto_Ingrediente(String nome, int valor,
-                               String Tipo_Ingrediente,int quantidade) {
-        super(nome, valor, quantidade);
+                               String Tipo_Ingrediente,int quantidade, String tipo) {
+        super(nome, valor, quantidade, tipo);
     }
 
     /**

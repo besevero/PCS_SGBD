@@ -1,7 +1,7 @@
 package DAO;
 
 import Model.Produto;
-import Infra;
+import DAO.Infra;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,9 +14,9 @@ import java.util.List;
  */
 public class ProdutoDAO {
     
-    Infra con = new Infra();
+    private Infra con = new Infra();
     
-    public List consultarAutor(String nome) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
+    public List consultarProduto(String nome) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List listaProduto = new ArrayList<>();
@@ -25,24 +25,25 @@ public class ProdutoDAO {
         try{
             con.abrirConexao();
   
-            String sql = "SELECT * FROM autores WHERE nome = ?;";
-            stmt = con.prepareStatement(sql);
+            String sql = "SELECT * FROM produto WHERE nome = ?;";
+            stmt = con.getConn().prepareStatement(sql);
             stmt.setString(1,nome);
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                autor = new Autor();
-                autor.setId(rs.getInt("id"));
-                autor.setNome(rs.getString("nome"));
-                autor.setNome_de_citacao(rs.getString("nome_de_citacao"));
-                autor.setCpf(rs.getInt("cpf"));
-                listaAutor.add(autor);
+                produto = new Produto();
+                produto.setNome(rs.getString("nome"));
+                produto.setPreco(rs.getInt("preco"));
+                produto.setQuantidade(rs.getInt("quantidade"));
+                produto.setTipo(rs.getString("tipo"));
+                listaProduto.add(produto);
             }
             rs.close();
             stmt.close();
-            conn.fecharConexao();
+            con.fecharConexao();
+            
         }catch(SQLException e){}
-        return listaAutor;
+        return listaProduto;
     }
     public void inserirAutor(Autor autor){
         PreparedStatement stmt = null;

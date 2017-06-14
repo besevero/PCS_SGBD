@@ -32,8 +32,8 @@ public class Produto_Massa extends Produto{
         IdMassa = persistencia.lerXML();
     }
     
-    public Produto_Massa(String nome, int valor, int quantidade) {
-        super(nome, valor, quantidade);
+    public Produto_Massa(String nome, int valor, int quantidade, String tipo) {
+        super(nome, valor, quantidade, tipo);
     }
     
     /**

@@ -18,8 +18,8 @@ public class Montar_Prato extends Produto{
     public Montar_Prato(){}
     public Montar_Prato(Produto_Massa m, Produto_Ingrediente[] ingr, Molho mol, 
                         Produto_Extra prodEx, boolean adProdEx, boolean adIngredExtra, 
-                        String nome, int valor, int qtde) {
-        super(nome, valor, qtde);
+                        String nome, int valor, int qtde, String tipo) {
+        super(nome, valor, qtde, tipo);
         this.massa = m;
         this.ingrediente = ingr;
         this.molho = mol;

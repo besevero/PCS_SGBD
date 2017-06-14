@@ -16,8 +16,8 @@ public class Bebida extends Produto{
     
     private ArrayList<Produto> idBebida = new ArrayList();
     private Arquivos persistencia = new Arquivos("Bebida.xml", idBebida); 
-    public Bebida(String nome, int valor,int quantidade) {
-        super(nome, valor, quantidade);
+    public Bebida(String nome, int valor,int quantidade, String tipo) {
+        super(nome, valor, quantidade, tipo);
         this.idBebida = idBebida;
 
         

@@ -25,8 +25,8 @@ public class Molho extends Produto{
         persistencia.imprimir();*/
         molho=persistencia.lerXML();
      }
-    public Molho(String nome, int valor, int quantidade) {
-        super(nome, valor, quantidade);
+    public Molho(String nome, int valor, int quantidade, String tipo) {
+        super(nome, valor, quantidade, tipo);
     }
     public ArrayList<Produto> getMolho() {
         return molho;

@@ -26,8 +26,8 @@ public class Produto_Extra extends Produto{
         persistencia.imprimir();*/
         prodExtra=persistencia.lerXML();
     }
-    public Produto_Extra(String nome, int valor, int quantidade) {
-        super(nome, valor, quantidade);
+    public Produto_Extra(String nome, int valor, int quantidade, String tipo) {
+        super(nome, valor, quantidade, tipo);
         
 
     }
