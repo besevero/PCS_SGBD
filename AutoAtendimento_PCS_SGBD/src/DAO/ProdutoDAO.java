@@ -82,17 +82,17 @@ public class ProdutoDAO {
         return listaProduto;
     }
     /*
-      *Atualiza a quantidade de itens disponível de determinado produto
+      *Atualiza a quantidade de itens disponível de determinado tipo de produto
       */
-   public void atualizarQuantidadeProduto(String nomeAlterar){
+   public void atualizarQuantidadeProduto(String tipoAlterar){
         PreparedStatement stmt = null;
         ResultSet rs = null;
                 
         try{
             con.abrirConexao();
-            String sql = "UPDATE produto SET quantidade = 50 WHERE nome = ?";
+            String sql = "UPDATE produto SET quantidade = 50 WHERE tipo = ?";
             stmt = con.getConn().prepareStatement(sql);
-            stmt.setString(1, nomeAlterar);
+            stmt.setString(1, tipoAlterar);
             rs = stmt.executeQuery();
             rs.close();
             stmt.close();

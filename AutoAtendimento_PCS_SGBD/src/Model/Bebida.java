@@ -27,20 +27,8 @@ public class Bebida extends Produto{
     }
     public Bebida() {        
         try {
-            /* idBebida.add(new Produto ("Mate", 4, 20));
-            idBebida.add(new Produto ("Suco de uva", 5, 20));
-            idBebida.add(new Produto ("Suco de laranja", 5, 20));
-            idBebida.add(new Produto ("Coca-cola", 4, 20));
-            idBebida.add(new Produto ("Ice tea", 4, 20));
-            persistencia.imprimir();*/
             idBebida = persistencia.consultarProdutoTipo("bebida");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Bebida.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Bebida.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(Bebida.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(Bebida.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

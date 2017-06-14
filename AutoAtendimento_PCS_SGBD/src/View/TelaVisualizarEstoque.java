@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Controle.ControleEstoque;
 import javax.swing.DefaultListModel;
-import Controle.Arquivos;
+import DAO.ProdutoDAO;
 import Model.Bebida;
 import Model.Molho;
 import Model.Prato_Favorito;
@@ -15,7 +10,10 @@ import Model.Prato_Promocao;
 import Model.Produto_Extra;
 import Model.Produto_Ingrediente;
 import Model.Produto_Massa;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,128 +29,129 @@ public class TelaVisualizarEstoque extends javax.swing.JFrame {
     private boolean reposicao = false;
     private ArrayList produto = new ArrayList();
     
-    public void AdicionaEstoque(String nomes){
+    public void AdicionaEstoque(String nomes) throws ClassNotFoundException{
         
-        Arquivos persistencia = new Arquivos(nomes);
+        ProdutoDAO persistencia = new ProdutoDAO();
                 
         modeloEstoque.clear();
 
         if(nomes.equals("Bebida.xml")){
             Bebida bebida = new Bebida();
-            bebida.setIdBebida(persistencia.lerXML());
+            try {
+                bebida.setIdBebida(persistencia.consultarProdutoTipo("bebida"));
+            } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
+                Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
+            }
             for(int i = 0 ; i<bebida.getIdBebida().size();i++){
                 modeloEstoque.addElement(bebida.getIdBebida().get(i).getNome()
                         + " ------ " + bebida.getIdBebida().get(i).getQuantidade());
             }
             if(isReposicao() == true){
-                for(int i = 0 ; i<bebida.getIdBebida().size();i++){
-                    bebida.getIdBebida().get(i).setQuantidade(35);
-                }
                 setReposicao(false);
-                persistencia.setEscrever(bebida.getIdBebida());
-                persistencia.imprimir();
+                persistencia.atualizarQuantidadeProduto("bebida");
             }
             
             
         }
          if(nomes.equals("Molho.xml")){
             Molho molho= new Molho();
-            molho.setMolho(persistencia.lerXML());
+            try {
+                molho.setMolho(persistencia.consultarProdutoTipo("molho"));
+            } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
+                Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
+            }
             for(int i = 0 ; i<molho.getMolho().size();i++){
                 modeloEstoque.addElement(molho.getMolho().get(i).getNome()
                         + " ------ " + molho.getMolho().get(i).getQuantidade());
             }
             if(isReposicao() == true){
-                for(int i = 0 ; i<molho.getMolho().size();i++){
-                    molho.getMolho().get(i).setQuantidade(35);
-                }
+               persistencia.atualizarQuantidadeProduto("molho");
                 setReposicao(false);
-                persistencia.setEscrever(molho.getMolho());
-                persistencia.imprimir();
+               
             }
             
         }
           if(nomes.equals("Favorito.xml")){
             Prato_Favorito favorito= new Prato_Favorito();
-            favorito.setfavorito(persistencia.lerXML());
+            try {
+                favorito.setfavorito(persistencia.consultarProdutoTipo("favorito"));
+            } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
+                Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
+            }
             for(int i = 0 ; i<favorito.getFavorito().size();i++){
                 modeloEstoque.addElement(favorito.getFavorito().get(i).getNome()
                         + " ------ " + favorito.getFavorito().get(i).getQuantidade());
             }
             if(isReposicao() == true){
-                for(int i = 0 ; i<favorito.getFavorito().size();i++){
-                    favorito.getFavorito().get(i).setQuantidade(35);
-                }
+              persistencia.atualizarQuantidadeProduto("favorito");
                 setReposicao(false);
-                persistencia.setEscrever(favorito.getFavorito());
-                persistencia.imprimir();
             }
             
         }
            if(nomes.equals("Promocao.xml")){
             Prato_Promocao promocao = new Prato_Promocao();
-            promocao.setPromoc(persistencia.lerXML());
+            try {
+                promocao.setPromoc(persistencia.consultarProdutoTipo("promocao"));
+            } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+                Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
+            }
             for(int i = 0 ; i<promocao.getPromoc().size();i++){
                 modeloEstoque.addElement(promocao.getPromoc().get(i).getNome()
                         + " ------ " + promocao.getPromoc().get(i).getQuantidade());
             }
             if(isReposicao() == true){
-                for(int i = 0 ; i<promocao.getPromoc().size();i++){
-                    promocao.getPromoc().get(i).setQuantidade(35);
-                }
+                persistencia.atualizarQuantidadeProduto("bebida");
                 setReposicao(false);
-                persistencia.setEscrever(promocao.getPromoc());
-                persistencia.imprimir();
             }
             
         }
             if(nomes.equals("Extra.xml")){
                Produto_Extra extra = new Produto_Extra();
-                extra.setProdExtra(persistencia.lerXML());
+            try {
+                extra.setProdExtra(persistencia.consultarProdutoTipo("extra"));
+            } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+                Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 for(int i = 0 ; i<extra.getProdExtra().size();i++){
                     modeloEstoque.addElement(extra.getProdExtra().get(i).getNome()
                         + " ------ " + extra.getProdExtra().get(i).getQuantidade());
             }
                 if(isReposicao() == true){
-                for(int i = 0 ; i<extra.getProdExtra().size();i++){
-                    extra.getProdExtra().get(i).setQuantidade(35);
+                    persistencia.atualizarQuantidadeProduto("extra");
+                    setReposicao(false);
                 }
-                setReposicao(false);
-                persistencia.setEscrever(extra.getProdExtra());
-                persistencia.imprimir();
-            }
         }
             if(nomes.equals("Ingrediente.xml")){
                 Produto_Ingrediente ingrediente = new Produto_Ingrediente();
-                ingrediente.setIdIngrediente(persistencia.lerXML());
+            try {
+                ingrediente.setIdIngrediente(persistencia.consultarProdutoTipo("ingrediente"));
+            } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+                Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 for(int i = 0 ; i<ingrediente.getIdIngrediente().size();i++){
                     modeloEstoque.addElement(ingrediente.getIdIngrediente().get(i).getNome()
                             + " ------ " + ingrediente.getIdIngrediente().get(i).getQuantidade());
             }
                 if(isReposicao() == true){
-                for(int i = 0 ; i<ingrediente.getIdIngrediente().size();i++){
-                    ingrediente.getIdIngrediente().get(i).setQuantidade(100);
-                }
-                setReposicao(false);
-                persistencia.setEscrever(ingrediente.getIdIngrediente());
-                persistencia.imprimir();
+                    persistencia.atualizarQuantidadeProduto("ingrediente");
+                    setReposicao(false);
             }
             if(nomes.equals("Massa.xml")){
                 Produto_Massa massa = new Produto_Massa();
-                massa.setIdMassa(persistencia.lerXML());
+                    try {
+                        massa.setIdMassa(persistencia.consultarProdutoTipo("massa"));
+                    } catch (SQLException | InstantiationException | IllegalAccessException ex) {
+                        Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 for(int i = 0 ; i<massa.getIdMassa().size();i++){
                 modeloEstoque.addElement(massa.getIdMassa().get(i).getNome()
                         + " ------ " + massa.getIdMassa().get(i).getQuantidade());
                 
             }
                 if(isReposicao() == true){
-                    for(int i = 0 ; i<massa.getIdMassa().size();i++){
-                        massa.getIdMassa().get(i).setQuantidade(35);
-                    }
-                        setReposicao(false);
-                    persistencia.setEscrever(massa.getIdMassa());
-                    persistencia.imprimir();
-                 }   
+                    persistencia.atualizarQuantidadeProduto("massa");
+                    setReposicao(false);
+                }   
         }
         }
             
