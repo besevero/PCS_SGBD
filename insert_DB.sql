@@ -1,4 +1,7 @@
-﻿insert into produto(nome, preco, quantidade, tipo)
+﻿ALTER TABLE produto
+ADD tipo varchar(30);
+
+insert into produto(nome, preco, quantidade, tipo)
 values('Mate', 4, 20, 'bebida');
 insert into produto(nome, preco, quantidade, tipo)
 values('Suco de uva', 5, 20, 'bebida');
