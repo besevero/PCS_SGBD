@@ -14,7 +14,7 @@ import java.sql.DriverManager;
  * Classe para centralizar a conexão com o banco de dados
  */
 public class Infra {
-    private static String dbURL = "jdbc:postgresql://localhost:5432/AutoAtendimento";
+    private static String dbURL = "jdbc:postgresql://localhost:5432/Spoleto";
     private static String usuario = "postgres";
     private static String senha = "admin";
     private static Connection conn = null;

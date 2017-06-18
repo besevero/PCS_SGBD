@@ -14,7 +14,7 @@ public class Prato_Promocao extends Produto{
     
     public Prato_Promocao(){
          try {
-             promoc=persistencia.consultarProdutoTipo("favorito");
+             promoc=persistencia.consultarProdutoTipo("promocao");
                      
                      } catch (ClassNotFoundException ex) {
              Logger.getLogger(Prato_Promocao.class.getName()).log(Level.SEVERE, null, ex);
@@ -28,8 +28,9 @@ public class Prato_Promocao extends Produto{
 
     }
     
-    public Prato_Promocao(String nome, int valor, int quantidade, String tipo) {
+    public Prato_Promocao(String nome, int valor, int quantidade, String tipo, ArrayList<Produto> promoc) {
         super(nome, valor, quantidade, tipo);
+        this.promoc = promoc;
     }
     
     
