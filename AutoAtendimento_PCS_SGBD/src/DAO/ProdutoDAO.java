@@ -95,9 +95,10 @@ public class ProdutoDAO {
         try{
              infra.abrirConexao();
            
-            String sql = "UPDATE produto SET quantidade =" +quantidade+ " WHERE nome = ?";
+            String sql = "UPDATE produto SET quantidade = ? WHERE tipo = ?";
             stmt = infra.getConn().prepareStatement(sql);
-            stmt.setString(1, nome);
+            stmt.setInt(1, quantidade);
+            stmt.setString(2, nome);
             rs = stmt.executeQuery();
             rs.close();
             stmt.close();

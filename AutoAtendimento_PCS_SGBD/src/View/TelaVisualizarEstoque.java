@@ -25,7 +25,6 @@ public class TelaVisualizarEstoque extends javax.swing.JFrame {
 
     private DefaultListModel modeloEstoque = new DefaultListModel();  
     private ControleEstoque controleEstoque;
-    private ControlePagamento controlPayment;
     private String nome;
     private TelaAtendente atendente;
     private TelaEstoque estoque;
@@ -57,7 +56,7 @@ public class TelaVisualizarEstoque extends javax.swing.JFrame {
         nomes = nomes.toLowerCase();
         if(isReposicao() == true){
             try {
-                controlPayment.atualizaQdeProd();
+                persistencia.atualizarQuantidadeProduto(50,nomes);
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
                 Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
             }
