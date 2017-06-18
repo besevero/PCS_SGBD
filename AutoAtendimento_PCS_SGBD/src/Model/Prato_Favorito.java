@@ -15,13 +15,8 @@ import java.util.logging.Logger;
 public class Prato_Favorito extends Produto{
     
      private ArrayList<Produto> favorito = new ArrayList();
-     private ProdutoDAO persistencia = ProdutoDAO();
-    public Prato_Favorito(String nome, int valor, int quantidade, ArrayList<Produto> promoc,
-            String tipo) {
-        super(nome, valor, quantidade, tipo);
-        this.favorito = favorito;
-    
-    }
+     private ProdutoDAO persistencia = new ProdutoDAO();
+     
     public Prato_Favorito(){    
          try {
              favorito = persistencia.consultarProdutoTipo("favorito");
@@ -35,6 +30,12 @@ public class Prato_Favorito extends Produto{
              Logger.getLogger(Prato_Favorito.class.getName()).log(Level.SEVERE, null, ex);
          }
     }
+    
+    public Prato_Favorito(String nome, int valor, int quantidade, ArrayList<Produto> favorito,
+            String tipo) {
+        super(nome, valor, quantidade, tipo);
+        this.favorito = favorito;
+    }
     /**
      * @return the favorito
      */
@@ -45,11 +46,7 @@ public class Prato_Favorito extends Produto{
    
     public void setfavorito(ArrayList<Produto> favorito) {
         this.favorito = favorito;
+        
     }
-
-    private ProdutoDAO ProdutoDAO() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
      
 }

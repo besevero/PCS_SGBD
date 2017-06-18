@@ -1,6 +1,7 @@
 package View;
 
 import Controle.ControleEstoque;
+import Controle.ControlePagamento;
 import javax.swing.DefaultListModel;
 import DAO.ProdutoDAO;
 import Model.Bebida;
@@ -24,6 +25,7 @@ public class TelaVisualizarEstoque extends javax.swing.JFrame {
 
     private DefaultListModel modeloEstoque = new DefaultListModel();  
     private ControleEstoque controleEstoque;
+    private ControlePagamento controlPayment;
     private String nome;
     private TelaAtendente atendente;
     private TelaEstoque estoque;
@@ -55,7 +57,7 @@ public class TelaVisualizarEstoque extends javax.swing.JFrame {
         nomes = nomes.toLowerCase();
         if(isReposicao() == true){
             try {
-                persistencia.atualizarQuantidadeProduto(nomes);
+                controlPayment.atualizaQdeProd();
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
                 Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
             }

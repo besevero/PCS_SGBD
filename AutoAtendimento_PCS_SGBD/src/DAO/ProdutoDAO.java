@@ -48,6 +48,8 @@ public class ProdutoDAO {
         }catch(SQLException e){}
         return listaProduto;
     }
+    
+    
     /*
     * Pesquisa no banco de dados e retorna os itens com determinado tipo
     */
@@ -85,7 +87,7 @@ public class ProdutoDAO {
     /*
       *Atualiza a quantidade de itens disponível de determinado tipo de produto
       */
-   public void atualizarQuantidadeProduto(String tipoAlterar) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
+   public void atualizarQuantidadeProduto(int quantidade, String nome) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
         PreparedStatement stmt = null;
         ResultSet rs = null;
        
@@ -93,9 +95,9 @@ public class ProdutoDAO {
         try{
              infra.abrirConexao();
            
-            String sql = "UPDATE produto SET quantidade = 100 WHERE tipo = ?";
+            String sql = "UPDATE produto SET quantidade =" +quantidade+ " WHERE nome = ?";
             stmt = infra.getConn().prepareStatement(sql);
-            stmt.setString(1, tipoAlterar);
+            stmt.setString(1, nome);
             rs = stmt.executeQuery();
             rs.close();
             stmt.close();
@@ -105,4 +107,25 @@ public class ProdutoDAO {
         }catch(SQLException e){}
     }
 
+    public int consultarProdutoQtde(String name){
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        int quantidade =0;
+        Produto produto = null;
+        
+        try{
+          infra.abrirConexao();
+          
+            String sql = "SELECT quantidade FROM produto WHERE nome = ?;";
+            stmt = infra.getConn().prepareStatement(sql);
+            stmt.setString(1,name);
+            rs = stmt.executeQuery();
+            rs.close();
+            stmt.close();
+            infra.fecharConexao();
+            
+        }catch(SQLException e){}
+        return quantidade;
+    }
+   
 }
