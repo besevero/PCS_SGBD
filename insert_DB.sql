@@ -1,5 +1,4 @@
-﻿
-CREATE TABLE produto (
+﻿CREATE TABLE produto (
                 nome VARCHAR(30) PRIMARY KEY,
                 preco FLOAT NOT NULL,
                 quantidade INTEGER NOT NULL,
@@ -8,8 +7,8 @@ CREATE TABLE produto (
 
 
 CREATE TABLE componentes (
-                id SERIAL PRIMARY KEY,
-                senha_pedido INTEGER NOT NULL,
+		id SERIAL PRIMARY KEY,
+                senha_componente INTEGER NOT NULL,
                 nome_componente VARCHAR(30) NOT NULL
                 
 );
@@ -17,7 +16,7 @@ CREATE TABLE componentes (
 
 CREATE TABLE pedido (
 		id SERIAL PRIMARY KEY,
-                senha_pedido INTEGER NOT NULL,
+		senha_pedido INTEGER NOT NULL,
                 preco FLOAT NOT NULL
 );
 
@@ -140,6 +139,12 @@ values('Cappelletti de Carne', 20, 100, 'massa');
 insert into produto(nome, preco, quantidade, tipo)
 values('Cappelletti de Frango', 20, 100, 'massa');
 
-INSERT INTO componentes(senha_pedido, nome_componente) VALUES(1, 'Cappelletti de Frango');
+INSERT INTO componentes(senha_componente, nome_componente) VALUES(1, 'Cappelletti de Frango');
+INSERT INTO componentes(senha_componente, nome_componente) VALUES(2, 'Cappelletti de Frango');
+INSERT INTO componentes(senha_componente, nome_componente) VALUES(3, 'Cappelletti de Carne');
 INSERT INTO pedido(senha_pedido, preco) VALUES(1,34.0);
+
 select * from componentes, pedido;
+
+drop table pedido;
+drop table componentes;
