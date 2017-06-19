@@ -5,6 +5,7 @@
  */
 package Controle;
 
+import DAO.pratosDAO;
 import Model.Pedido;
 import View.TelaAtendente;
 import View.TelaCartao;
@@ -21,7 +22,7 @@ public class ControleTelaCartao {
     private ArrayList<Pedido> pedidos = new ArrayList();
     private TelaCartao TelaCartao;
     private ArrayList<Pedido> pedidoLido;
-//    private Arquivos persistencia;
+    private pratosDAO persistencia = new pratosDAO();
     private TelaAtendente atendente;
     
     
@@ -29,8 +30,7 @@ public class ControleTelaCartao {
         this.pedido = pedido;
         this.atendente = atendente;
         this.TelaCartao = TelaCartao;
-      //  this.persistencia = atendente.getControleAtendente().getArquivo();
-//        persistencia.setEscrever(pedido.getPratos());
+        persistencia.insert_prato(pedido);
     }
     public void cancelar(){
         TelaPagamento pagamento = new TelaPagamento(pedido, atendente);
@@ -41,7 +41,6 @@ public class ControleTelaCartao {
     public boolean imprimir(String senha){
         pedidos.add(pedido);
         if(senha.equals("123")){
-        //    persistencia.imprimir();
 
         TelaNotaFiscal TelaNotaFiscal = new TelaNotaFiscal(pedido, atendente);
         TelaNotaFiscal.setVisible(true);

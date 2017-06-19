@@ -1,5 +1,25 @@
-﻿ALTER TABLE produto
-ADD tipo varchar(30);
+﻿
+CREATE TABLE produto (
+                nome VARCHAR(30) PRIMARY KEY,
+                preco FLOAT NOT NULL,
+                quantidade INTEGER NOT NULL,
+                tipo VARCHAR(30) NOT NULL
+);
+
+
+CREATE TABLE componentes (
+                id SERIAL PRIMARY KEY,
+                senha_pedido INTEGER NOT NULL,
+                nome_componente VARCHAR(30) NOT NULL
+                
+);
+
+
+CREATE TABLE pedido (
+		id SERIAL PRIMARY KEY,
+                senha_pedido INTEGER NOT NULL,
+                preco FLOAT NOT NULL
+);
 
 insert into produto(nome, preco, quantidade, tipo)
 values('Mate', 4, 20, 'bebida');
@@ -119,3 +139,7 @@ insert into produto(nome, preco, quantidade, tipo)
 values('Cappelletti de Carne', 20, 100, 'massa');
 insert into produto(nome, preco, quantidade, tipo)
 values('Cappelletti de Frango', 20, 100, 'massa');
+
+INSERT INTO componentes(senha_pedido, nome_componente) VALUES(1, 'Cappelletti de Frango');
+INSERT INTO pedido(senha_pedido, preco) VALUES(1,34.0);
+select * from componentes, pedido;

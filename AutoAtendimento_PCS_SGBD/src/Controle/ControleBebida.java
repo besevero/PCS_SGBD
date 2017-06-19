@@ -127,7 +127,4 @@ public class ControleBebida {
     public void setBebida(Bebida bebida) {
         this.bebida = bebida;
     }
-    void getqtdeBebida(ControleBebida[] b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

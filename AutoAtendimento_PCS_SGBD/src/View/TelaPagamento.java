@@ -23,6 +23,7 @@ public class TelaPagamento extends javax.swing.JFrame {
         listaPgto.setModel(modeloPagamento);
         novo.insereListaPgto(modeloPagamento);
         totalPedido.setText("R$ " + String.valueOf(novo.totalCompra()));
+        t.setPreco(novo.totalCompra());
     
     }
 

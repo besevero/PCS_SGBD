@@ -150,7 +150,7 @@ public class TelaAtendente extends javax.swing.JFrame {
         return ControleTelaAtendente;
     }
     public void AdicionarPedidos(Pedido pedido){
-        PanelPedido PanelPedido = new PanelPedido(this);
+        PainelPedido PanelPedido = new PainelPedido(this);
         PanelPedido.setTextPedido("PRODUTOS: \n");
         for(int i = 0; i < pedido.getPratos().size(); i++){
             String produto = pedido.getPratos().get(i).getNome() + "\n";
@@ -164,7 +164,7 @@ public class TelaAtendente extends javax.swing.JFrame {
         this.setVisible(false);
         this.setVisible(true);        
     }
-    public void retirarPedido(PanelPedido panel){
+    public void retirarPedido(PainelPedido panel){
         PanelPedidos.remove(panel);
         Dimension d = PanelPedidos.getPreferredSize();
         d.setSize(d.getWidth()- 100,d.getHeight());

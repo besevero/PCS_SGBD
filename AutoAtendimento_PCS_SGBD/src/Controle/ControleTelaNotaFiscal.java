@@ -9,7 +9,6 @@ import Model.Pedido;
 import View.TelaAtendente;
 import View.TelaInicial;
 import View.TelaNotaFiscal;
-import View.TelaPagamento;
 
 /**
  *

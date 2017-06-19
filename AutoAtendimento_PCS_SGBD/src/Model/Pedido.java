@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
 import java.io.Serializable;
@@ -13,9 +8,12 @@ import java.util.ArrayList;
  * @author PPGI
  */
 public class Pedido implements Serializable{
+
+ 
       private ArrayList<Produto> pratos = new ArrayList();
       private int senha;
       private int codigo = 0;
+      private double preco = 0.0;
       
     public Pedido() {
         this.senha = 1;
@@ -61,5 +59,19 @@ public class Pedido implements Serializable{
      */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+    
+       /**
+     * @return the preco
+     */
+    public double getPreco() {
+        return preco;
+    }
+
+    /**
+     * @param preco the preco to set
+     */
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 }

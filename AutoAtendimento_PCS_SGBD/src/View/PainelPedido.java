@@ -9,14 +9,14 @@ package View;
  *
  * @author PPGI
  */
-public class PanelPedido extends javax.swing.JPanel {
+public class PainelPedido extends javax.swing.JPanel {
 
     /**
-     * Creates new form PanelPedido
+     * Creates new form PainelPedido
      */
     private TelaAtendente atendente;
     
-    public PanelPedido(TelaAtendente atendente) {
+    public PainelPedido(TelaAtendente atendente) {
         initComponents();
         this.atendente = atendente;
     }    

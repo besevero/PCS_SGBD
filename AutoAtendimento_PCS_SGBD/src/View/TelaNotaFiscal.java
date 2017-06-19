@@ -7,9 +7,6 @@ package View;
 
 import Controle.ControleTelaNotaFiscal;
 import Model.Pedido;
-import java.util.Random;
-
-
 
 public class TelaNotaFiscal extends javax.swing.JFrame {
 
@@ -24,7 +21,6 @@ public class TelaNotaFiscal extends javax.swing.JFrame {
         novo = new ControleTelaNotaFiscal(this, atendente);
         novo.setPedido(p);
         nrPedido.setText(novo.getPedido().converteSenha());
-	
     }
 
     /**
@@ -154,6 +150,7 @@ public class TelaNotaFiscal extends javax.swing.JFrame {
 
     private void finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarActionPerformed
         novo.finalizar();
+        
     }//GEN-LAST:event_finalizarActionPerformed
 
     /**
