@@ -6,10 +6,15 @@
 package View;
 
 import Controle.ControleTelaCartao;
+import DAO.Infra;
+import DAO.pratosDAO;
 import java.beans.XMLEncoder;
 import java.io.IOException;
 import java.io.FileOutputStream;
 import Model.Pedido;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -24,11 +29,15 @@ public class TelaCartao extends javax.swing.JFrame {
      * Creates new form TelaCartao
      */
     ControleTelaCartao novo;
+    private pratosDAO persistencia;
+    private Infra infra;
+    Pedido pedido;  
     
     public TelaCartao(Pedido p, TelaAtendente atendente) {
         initComponents();
         this.setLocationRelativeTo(null);
         novo = new ControleTelaCartao(this, atendente, p);
+        this.pedido = p;
     }
 
   
@@ -157,11 +166,26 @@ public class TelaCartao extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
-        boolean senha = novo.imprimir(campoSenha.getText());
-        if(senha == false){
-            JOptionPane.showMessageDialog(null, "Senha Incorreta !", "ERRO", JOptionPane.ERROR_MESSAGE);
+        try {
+            boolean senha = novo.imprimir(campoSenha.getText());
+            if(senha == false){
+                JOptionPane.showMessageDialog(null, "Senha Incorreta !", "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                infra.abrirConexao();
+                System.out.println(pedido.getPratos().size());
+                System.out.println(pedido.getPratos().get(1).getNome());
+                System.out.println(pedido.getPratos().get(0).getNome());
+                persistencia.insert_pedido(pedido.getPreco(), pedido.getSenha());
+                for(int item = 0; item< pedido.getPratos().size();item++){
+                    persistencia.insert_prato(pedido.getPratos().get(item).getNome(), pedido.getSenha());
+                 }
+                
+                infra.fecharConexao();
+            }
+        } catch (SQLException ex) {
+                    Logger.getLogger(TelaNotaFiscal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        novo.lerXML();
       
     }//GEN-LAST:event_okActionPerformed
 

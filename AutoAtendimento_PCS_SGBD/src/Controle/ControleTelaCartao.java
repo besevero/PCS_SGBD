@@ -5,12 +5,12 @@
  */
 package Controle;
 
-import DAO.pratosDAO;
 import Model.Pedido;
 import View.TelaAtendente;
 import View.TelaCartao;
 import View.TelaNotaFiscal;
 import View.TelaPagamento;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -22,7 +22,6 @@ public class ControleTelaCartao {
     private ArrayList<Pedido> pedidos = new ArrayList();
     private TelaCartao TelaCartao;
     private ArrayList<Pedido> pedidoLido;
-    private pratosDAO persistencia = new pratosDAO();
     private TelaAtendente atendente;
     
     
@@ -30,7 +29,6 @@ public class ControleTelaCartao {
         this.pedido = pedido;
         this.atendente = atendente;
         this.TelaCartao = TelaCartao;
-        persistencia.insert_prato(pedido);
     }
     public void cancelar(){
         TelaPagamento pagamento = new TelaPagamento(pedido, atendente);
@@ -38,25 +36,20 @@ public class ControleTelaCartao {
         TelaCartao.setVisible(false);
     }
     
-    public boolean imprimir(String senha){
+    public boolean imprimir(String senha) throws SQLException{
         pedidos.add(pedido);
         if(senha.equals("123")){
-
-        TelaNotaFiscal TelaNotaFiscal = new TelaNotaFiscal(pedido, atendente);
-        TelaNotaFiscal.setVisible(true);
-        TelaCartao.setVisible(false);    
+            TelaNotaFiscal TelaNotaFiscal = new TelaNotaFiscal(pedido, atendente);
+            TelaNotaFiscal.setVisible(true);
+            TelaCartao.setVisible(false);    
         
-        return true;
+            return true;
         }
         else 
             return false;
         
     }
-    public void lerXML(){
-      //persistencia.lerXML();
-    }
-    
-
+  
     public Pedido getPedido() {
         return pedido;
     }

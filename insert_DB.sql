@@ -144,7 +144,8 @@ INSERT INTO componentes(senha_componente, nome_componente) VALUES(2, 'Cappellett
 INSERT INTO componentes(senha_componente, nome_componente) VALUES(3, 'Cappelletti de Carne');
 INSERT INTO pedido(senha_pedido, preco) VALUES(1,34.0);
 
-select * from componentes, pedido;
+select * from componentes;
+select * from pedido;
 
 drop table pedido;
 drop table componentes;

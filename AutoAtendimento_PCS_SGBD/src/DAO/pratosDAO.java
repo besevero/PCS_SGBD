@@ -6,6 +6,7 @@
 package DAO;
 
 import Model.Pedido;
+import Model.Produto;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,46 +20,44 @@ public class pratosDAO {
     
     
     public pratosDAO(){};
-    public void insert_prato(Pedido p){
+    
+    public void insert_prato(String nome, int senha) throws SQLException{
         PreparedStatement stmt_componente = null;
-            
         ResultSet rs = null;
         
         try{
-          infra.abrirConexao();
-          
-            String sql_componente = "INSERT INTO componentes(senha_componente, nome_componente) VALUES(?, ?);";
+                    
+           String sql_componente = "INSERT INTO componentes(senha_componente, nome_componente) VALUES(?, ?);";
             
-                        
-            for(int i = 0; i<=p.getPratos().size();i++){
-                
-                    stmt_componente = infra.getConn().prepareStatement(sql_componente);
-                    stmt_componente.setInt(1,p.getSenha());
-                    stmt_componente.setString(2,p.getPratos().get(i).getNome());
-                    rs = stmt_componente.executeQuery();
-            }
-                        
-            insert_pedido(p);
-                
+            stmt_componente = infra.getConn().prepareStatement(sql_componente);
+            stmt_componente.setInt(1,senha);
+            stmt_componente.setString(2,nome);
+                    
+                    stmt_componente.close();
+            
+            rs = stmt_componente.executeQuery();
             rs.close();
-            stmt_componente.close();
-            
-            infra.fecharConexao();
+           
+          
             
         }catch(SQLException e){}
                
     }
-     public void insert_pedido(Pedido p) throws SQLException{
-          PreparedStatement stmt_pedido = null;
-          ResultSet rs = null;
+     public void insert_pedido(double preco, int senha) throws SQLException{
+            PreparedStatement stmt_pedido = null;
+            ResultSet rs = null;          
+
           String sql_pedido = "INSERT INTO pedido(senha_pedido, preco) VALUES(?, ?);";
           try{
+            
             stmt_pedido = infra.getConn().prepareStatement(sql_pedido);
-            stmt_pedido.setInt(1, p.getSenha());
-            stmt_pedido.setDouble(2, p.getPreco());
-            rs = stmt_pedido.executeQuery();
+            stmt_pedido.setInt(1, senha);
+            stmt_pedido.setDouble(2, preco);
+            
           }
+
           catch(SQLException e){}
+          rs = stmt_pedido.executeQuery();
           rs.close();
           stmt_pedido.close();
      }

@@ -6,7 +6,12 @@
 package View;
 
 import Controle.ControleTelaNotaFiscal;
+import DAO.Infra;
+import DAO.pratosDAO;
 import Model.Pedido;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TelaNotaFiscal extends javax.swing.JFrame {
 
@@ -14,13 +19,14 @@ public class TelaNotaFiscal extends javax.swing.JFrame {
      * Creates new form TelaNotaFiscal
      */
     private ControleTelaNotaFiscal novo;
-    
-    public TelaNotaFiscal(Pedido p, TelaAtendente atendente) {
+    private Pedido p;
+    public TelaNotaFiscal(Pedido p, TelaAtendente atendente) throws SQLException {
         initComponents();
         this.setLocationRelativeTo(null);
         novo = new ControleTelaNotaFiscal(this, atendente);
         novo.setPedido(p);
         nrPedido.setText(novo.getPedido().converteSenha());
+
     }
 
     /**
@@ -150,7 +156,7 @@ public class TelaNotaFiscal extends javax.swing.JFrame {
 
     private void finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarActionPerformed
         novo.finalizar();
-        
+       
     }//GEN-LAST:event_finalizarActionPerformed
 
     /**
