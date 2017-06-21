@@ -1,8 +1,6 @@
 package DAO;
 
 import Model.Produto;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -89,9 +87,7 @@ public class ProdutoDAO {
       */
    public void atualizarQuantidadeProduto(int quantidade, String nome) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
         PreparedStatement stmt = null;
-        ResultSet rs = null;
-       
-                
+                      
         try{
              infra.abrirConexao();
            
@@ -99,8 +95,8 @@ public class ProdutoDAO {
             stmt = infra.getConn().prepareStatement(sql);
             stmt.setInt(1, quantidade);
             stmt.setString(2, nome);
-            rs = stmt.executeQuery();
-            rs.close();
+            stmt.executeQuery();
+           
             stmt.close();
             
           infra.fecharConexao();
@@ -110,8 +106,8 @@ public class ProdutoDAO {
 
     public int consultarProdutoQtde(String name){
         PreparedStatement stmt = null;
-        ResultSet rs = null;
-        int quantidade =0;
+        
+        int quantidade = 0;
         Produto produto = null;
         
         try{
@@ -120,8 +116,8 @@ public class ProdutoDAO {
             String sql = "SELECT quantidade FROM produto WHERE nome = ?;";
             stmt = infra.getConn().prepareStatement(sql);
             stmt.setString(1,name);
-            rs = stmt.executeQuery();
-            rs.close();
+            stmt.executeQuery();
+           
             stmt.close();
             infra.fecharConexao();
             

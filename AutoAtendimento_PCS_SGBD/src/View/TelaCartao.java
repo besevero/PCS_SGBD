@@ -29,7 +29,7 @@ public class TelaCartao extends javax.swing.JFrame {
      * Creates new form TelaCartao
      */
     ControleTelaCartao novo;
-    private pratosDAO persistencia;
+    private pratosDAO persistencia = new pratosDAO();
     private Infra infra;
     Pedido pedido;  
     
@@ -172,19 +172,22 @@ public class TelaCartao extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Senha Incorreta !", "ERRO", JOptionPane.ERROR_MESSAGE);
             }
             else{
+                Double preco = pedido.getPreco();
+                int senhaPedido = pedido.getSenha();
                 infra.abrirConexao();
                 System.out.println(pedido.getPratos().size());
-                System.out.println(pedido.getPratos().get(1).getNome());
                 System.out.println(pedido.getPratos().get(0).getNome());
-                persistencia.insert_pedido(pedido.getPreco(), pedido.getSenha());
+                                
                 for(int item = 0; item< pedido.getPratos().size();item++){
-                    persistencia.insert_prato(pedido.getPratos().get(item).getNome(), pedido.getSenha());
+                    String nome  = pedido.getPratos().get(item).getNome();
+                    persistencia.insert_prato(nome,senhaPedido);
                  }
+                persistencia.insert_pedido(preco, senhaPedido);
                 
                 infra.fecharConexao();
             }
         } catch (SQLException ex) {
-                    Logger.getLogger(TelaNotaFiscal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaNotaFiscal.class.getName()).log(Level.SEVERE, null, ex);
         }
       
     }//GEN-LAST:event_okActionPerformed
