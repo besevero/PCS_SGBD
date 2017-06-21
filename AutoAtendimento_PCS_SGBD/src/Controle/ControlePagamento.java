@@ -79,18 +79,9 @@ public class ControlePagamento {
     public void setTelaPagamento(TelaPagamento TelaPagamento) {
         this.TelaPagamento = TelaPagamento;
     }
+
     
-    public void atualizaQdeProd() throws ClassNotFoundException, InstantiationException, IllegalAccessException{
-        int quantidade = 0;
-         for(int i = 0; i<getPedido().getPratos().size();i++){
-            String nome = getPedido().getPratos().get(i).getNome();
-            quantidade = prod.consultarProdutoQtde(nome);
-            quantidade --;
-            prod.atualizarQuantidadeProduto(quantidade, nome);
-           
-        }
-    
-    }
+ 
 
     
 }

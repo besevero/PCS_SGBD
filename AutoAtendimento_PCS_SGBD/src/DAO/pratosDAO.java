@@ -23,7 +23,7 @@ public class pratosDAO {
     
     public void insert_prato(String nome, int senha) throws SQLException{
         PreparedStatement stmt_componente = null;
-               
+        
         try{
                     
            String sql_componente = "INSERT INTO componentes(senha_componente, nome_componente) VALUES(?, ?);";
@@ -32,6 +32,7 @@ public class pratosDAO {
             stmt_componente.setInt(1,senha);
             stmt_componente.setString(2,nome);
             stmt_componente.executeQuery();        
+            
             
             stmt_componente.close();
                                    
@@ -55,4 +56,24 @@ public class pratosDAO {
           
           stmt_pedido.close();
      }
+      public int retornaSenha(){
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        int senha = 1;
+        try{
+          infra.abrirConexao();
+          
+            String sql = "SELECT * FROM pedido ORDER BY senha_pedido DESC LIMIT 1";
+            stmt = infra.getConn().prepareStatement(sql);
+            rs = stmt.executeQuery();
+            senha = rs.getInt("senha_pedido");    
+            System.out.println(senha);
+            rs.close();
+            stmt.close();
+            infra.fecharConexao();
+            
+        }catch(SQLException e){}
+        
+        return senha;
+    }
 }

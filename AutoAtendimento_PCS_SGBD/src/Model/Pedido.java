@@ -1,5 +1,6 @@
 package Model;
 
+import DAO.pratosDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -14,9 +15,9 @@ public class Pedido implements Serializable{
       private int senha;
       private int codigo = 0;
       private double preco = 0.0;
-      
+      private pratosDAO persistencia = new pratosDAO();
     public Pedido() {
-        this.senha = 1;
+        this.senha = persistencia.getSenha();
         
     }
     public int incrementaSenha(){

@@ -103,26 +103,26 @@ public class ProdutoDAO {
           
         }catch(SQLException e){}
     }
-
-    public int consultarProdutoQtde(String name){
+   
+        
+   public void diminuirQuantidadeProduto(int quantidade, String nome) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
         PreparedStatement stmt = null;
-        
-        int quantidade = 0;
-        Produto produto = null;
-        
+                      
         try{
-          infra.abrirConexao();
-          
-            String sql = "SELECT quantidade FROM produto WHERE nome = ?;";
+             infra.abrirConexao();
+           
+            String sql = "UPDATE produto SET quantidade = ? WHERE tipo = ?";
             stmt = infra.getConn().prepareStatement(sql);
-            stmt.setString(1,name);
+            stmt.setInt(1, quantidade);
+            stmt.setString(2, nome);
             stmt.executeQuery();
            
             stmt.close();
-            infra.fecharConexao();
             
+          infra.fecharConexao();
+          
         }catch(SQLException e){}
-        return quantidade;
     }
+   
    
 }

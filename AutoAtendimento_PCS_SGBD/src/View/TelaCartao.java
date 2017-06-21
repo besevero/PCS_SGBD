@@ -175,8 +175,7 @@ public class TelaCartao extends javax.swing.JFrame {
                 Double preco = pedido.getPreco();
                 int senhaPedido = pedido.getSenha();
                 infra.abrirConexao();
-                System.out.println(pedido.getPratos().size());
-                System.out.println(pedido.getPratos().get(0).getNome());
+             
                                 
                 for(int item = 0; item< pedido.getPratos().size();item++){
                     String nome  = pedido.getPratos().get(item).getNome();
