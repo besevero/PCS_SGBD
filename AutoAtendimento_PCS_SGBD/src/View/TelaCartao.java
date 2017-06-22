@@ -7,6 +7,7 @@ package View;
 
 import Controle.ControleTelaCartao;
 import DAO.Infra;
+import DAO.ProdutoDAO;
 import DAO.pratosDAO;
 import java.beans.XMLEncoder;
 import java.io.IOException;
@@ -30,6 +31,7 @@ public class TelaCartao extends javax.swing.JFrame {
      */
     ControleTelaCartao novo;
     private pratosDAO persistencia = new pratosDAO();
+    private ProdutoDAO persistenciaQuantidade = new ProdutoDAO();
     private Infra infra;
     Pedido pedido;  
     
@@ -179,7 +181,11 @@ public class TelaCartao extends javax.swing.JFrame {
                                 
                 for(int item = 0; item< pedido.getPratos().size();item++){
                     String nome  = pedido.getPratos().get(item).getNome();
+                    int quantidade = (pedido.getPratos().get(item).getQuantidade())-1;
+                    pedido.getPratos().get(item).setQuantidade(quantidade);
+                    System.out.println(nome + " " + quantidade);
                     persistencia.insert_prato(nome,senhaPedido);
+                    persistenciaQuantidade.atualizarQuantidadeProdutoNome(quantidade, nome);
                  }
                 persistencia.insert_pedido(preco, senhaPedido);
                 
@@ -187,6 +193,8 @@ public class TelaCartao extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(TelaNotaFiscal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(TelaCartao.class.getName()).log(Level.SEVERE, null, ex);
         }
       
     }//GEN-LAST:event_okActionPerformed

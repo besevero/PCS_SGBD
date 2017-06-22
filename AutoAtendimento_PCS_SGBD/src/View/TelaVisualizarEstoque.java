@@ -56,7 +56,7 @@ public class TelaVisualizarEstoque extends javax.swing.JFrame {
         nomes = nomes.toLowerCase();
         if(isReposicao() == true){
             try {
-                persistencia.atualizarQuantidadeProduto(50,nomes);
+                persistencia.atualizarQuantidadeProdutoTipo(50,nomes);
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
                 Logger.getLogger(TelaVisualizarEstoque.class.getName()).log(Level.SEVERE, null, ex);
             }

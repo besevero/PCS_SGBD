@@ -6,8 +6,6 @@
 package View;
 
 import Controle.ControleTelaNotaFiscal;
-import DAO.Infra;
-import DAO.pratosDAO;
 import Model.Pedido;
 import java.sql.SQLException;
 import java.util.logging.Level;

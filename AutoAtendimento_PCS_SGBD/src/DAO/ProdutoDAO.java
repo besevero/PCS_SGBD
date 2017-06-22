@@ -85,13 +85,13 @@ public class ProdutoDAO {
     /*
       *Atualiza a quantidade de itens disponível de determinado tipo de produto
       */
-   public void atualizarQuantidadeProduto(int quantidade, String nome) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
+   public void atualizarQuantidadeProdutoNome(int quantidade, String nome) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
         PreparedStatement stmt = null;
                       
         try{
              infra.abrirConexao();
            
-            String sql = "UPDATE produto SET quantidade = ? WHERE tipo = ?";
+            String sql = "UPDATE produto SET quantidade = ? WHERE nome = ?;";
             stmt = infra.getConn().prepareStatement(sql);
             stmt.setInt(1, quantidade);
             stmt.setString(2, nome);
@@ -103,18 +103,16 @@ public class ProdutoDAO {
           
         }catch(SQLException e){}
     }
-   
-        
-   public void diminuirQuantidadeProduto(int quantidade, String nome) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
+   public void atualizarQuantidadeProdutoTipo(int quantidade, String tipo) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
         PreparedStatement stmt = null;
                       
         try{
              infra.abrirConexao();
            
-            String sql = "UPDATE produto SET quantidade = ? WHERE tipo = ?";
+            String sql = "UPDATE produto SET quantidade = ? WHERE tipo = ?;";
             stmt = infra.getConn().prepareStatement(sql);
             stmt.setInt(1, quantidade);
-            stmt.setString(2, nome);
+            stmt.setString(2, tipo);
             stmt.executeQuery();
            
             stmt.close();
@@ -123,6 +121,4 @@ public class ProdutoDAO {
           
         }catch(SQLException e){}
     }
-   
-   
 }
