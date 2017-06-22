@@ -12,12 +12,13 @@ public class Pedido implements Serializable{
 
  
       private ArrayList<Produto> pratos = new ArrayList();
+      private pratosDAO persistencia = new pratosDAO();
       private int senha;
       private int codigo = 0;
       private double preco = 0.0;
-      private pratosDAO persistencia = new pratosDAO();
+      
     public Pedido() {
-        this.senha = persistencia.getSenha();
+        this.senha = persistencia.retornaSenha();
         
     }
     public int incrementaSenha(){

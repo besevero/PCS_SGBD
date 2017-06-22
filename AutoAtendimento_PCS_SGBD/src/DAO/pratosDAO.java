@@ -59,21 +59,23 @@ public class pratosDAO {
       public int retornaSenha(){
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        int senha = 1;
+        int senha = 0;
+        String sql = "SELECT * FROM pedido ORDER BY senha_pedido DESC LIMIT 1";
         try{
-          infra.abrirConexao();
+            infra.abrirConexao();
           
-            String sql = "SELECT * FROM pedido ORDER BY senha_pedido DESC LIMIT 1";
             stmt = infra.getConn().prepareStatement(sql);
             rs = stmt.executeQuery();
-            senha = rs.getInt("senha_pedido");    
-            System.out.println(senha);
+            while(rs.next()){
+                senha = rs.getInt("senha_pedido");    
+            }
+            
             rs.close();
             stmt.close();
             infra.fecharConexao();
             
         }catch(SQLException e){}
         
-        return senha;
+        return senha+1;
     }
 }
