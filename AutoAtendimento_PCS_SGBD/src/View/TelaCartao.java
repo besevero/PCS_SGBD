@@ -184,7 +184,6 @@ public class TelaCartao extends javax.swing.JFrame {
                     int quantidade = (pedido.getPratos().get(item).getQuantidade())-1;
                     pedido.getPratos().get(item).setQuantidade(quantidade);
                     System.out.println(nome + " " + quantidade);
-                    persistencia.insert_prato(nome,senhaPedido);
                     persistenciaQuantidade.atualizarQuantidadeProdutoNome(quantidade, nome);
                  }
                 persistencia.insert_pedido(preco, senhaPedido);

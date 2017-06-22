@@ -287,19 +287,19 @@ public class TelaBebidas extends javax.swing.JFrame {
 
     private void cocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cocaActionPerformed
         // TODO add your handling code here:
-        escolhaBebida.setText(novo.selecao(3));
+        escolhaBebida.setText("Coca-Cola");
         desativar();
     }//GEN-LAST:event_cocaActionPerformed
 
     private void iceTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iceTeaActionPerformed
         // TODO add your handling code here:
-        escolhaBebida.setText(novo.selecao(4));
+        escolhaBebida.setText("Ice Tea");
         desativar();
     }//GEN-LAST:event_iceTeaActionPerformed
 
     private void laranjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laranjaActionPerformed
         // TODO add your handling code here:
-        escolhaBebida.setText(novo.selecao(2));
+        escolhaBebida.setText("Suco de Laranja");
         desativar();
     }//GEN-LAST:event_laranjaActionPerformed
 
@@ -312,13 +312,13 @@ public class TelaBebidas extends javax.swing.JFrame {
     private void mateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mateActionPerformed
         // TODO add your handling code here:
         desativar();
-        escolhaBebida.setText(novo.selecao(0));
+        escolhaBebida.setText("Mate");
     }//GEN-LAST:event_mateActionPerformed
 
     private void uvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uvaActionPerformed
         // TODO add your handling code here:
         desativar();
-        escolhaBebida.setText(novo.selecao(1));
+        escolhaBebida.setText("Suco de Uva");
     }//GEN-LAST:event_uvaActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed

@@ -138,14 +138,9 @@ insert into produto(nome, preco, quantidade, tipo)
 values('Cappelletti de Carne', 20, 100, 'massa');
 insert into produto(nome, preco, quantidade, tipo)
 values('Cappelletti de Frango', 20, 100, 'massa');
-
-INSERT INTO componentes(senha_componente, nome_componente) VALUES(1, 'Cappelletti de Frango');
-INSERT INTO componentes(senha_componente, nome_componente) VALUES(2, 'Cappelletti de Frango');
-INSERT INTO componentes(senha_componente, nome_componente) VALUES(3, 'Cappelletti de Carne');
-INSERT INTO pedido(senha_pedido, preco) VALUES(1,34.0);
-
+select * from produto;
 select * from componentes;
 select * from pedido;
-
+SELECT * FROM pedido ORDER BY senha_pedido DESC LIMIT 1;
 drop table pedido;
 drop table componentes;

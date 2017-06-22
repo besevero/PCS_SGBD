@@ -21,16 +21,17 @@ public class pratosDAO {
     
     public pratosDAO(){};
     
-    public void insert_prato(String nome, int senha) throws SQLException{
+    public void insert_prato(String nome, int codigo, int senha) throws SQLException{
         PreparedStatement stmt_componente = null;
         
         try{
                     
-           String sql_componente = "INSERT INTO componentes(senha_componente, nome_componente) VALUES(?, ?);";
+           String sql_componente = "INSERT INTO prato(codigo_prato, senha_pedido,nome) VALUES(?, ?, ?);";
             
             stmt_componente = infra.getConn().prepareStatement(sql_componente);
-            stmt_componente.setInt(1,senha);
-            stmt_componente.setString(2,nome);
+            stmt_componente.setInt(2,senha);
+            stmt_componente.setInt(1,codigo);
+            stmt_componente.setString(3,nome);
             stmt_componente.executeQuery();        
             
             
@@ -56,7 +57,29 @@ public class pratosDAO {
           
           stmt_pedido.close();
      }
-      public int retornaSenha(){
+      public int getCodigo(){
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        int codigo = 0;
+        String sql = "SELECT * FROM prato ORDER BY codigo_prato DESC LIMIT 1;";
+        try{
+            infra.abrirConexao();
+          
+            stmt = infra.getConn().prepareStatement(sql);
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                codigo = rs.getInt("codigo_prato");    
+            }
+            
+            rs.close();
+            stmt.close();
+            infra.fecharConexao();
+            
+        }catch(SQLException e){}
+        
+        return codigo+1;
+    }
+        public int retornaSenha(){
         PreparedStatement stmt = null;
         ResultSet rs = null;
         int senha = 0;

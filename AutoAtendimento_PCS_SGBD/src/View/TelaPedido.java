@@ -6,7 +6,12 @@
 package View;
 
 import Controle.ControlePedido;
+import DAO.Infra;
+import DAO.pratosDAO;
 import Model.Pedido;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 
@@ -20,7 +25,7 @@ public class TelaPedido extends javax.swing.JFrame {
     ImageIcon click_MaisPedido = new ImageIcon(getClass().getResource("/Imagens/click_MaisPedidos.png"));
     ImageIcon botao_MaisPedido = new ImageIcon(getClass().getResource("/Imagens/botao_MaisPedidos.png"));
     ControlePedido novo;
-
+    Pedido pedido;
     public TelaPedido(Pedido p, TelaAtendente atendente) {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -28,6 +33,8 @@ public class TelaPedido extends javax.swing.JFrame {
         novo.setPedido(p);
         listaPedido.setModel(modeloPedido);
         novo.insereLista(modeloPedido);
+        pedido = p;
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -144,11 +151,29 @@ public class TelaPedido extends javax.swing.JFrame {
     private void gerarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarPedidoActionPerformed
         novo.gerarPedido();
     }//GEN-LAST:event_gerarPedidoActionPerformed
-
+    pratosDAO persistenciaCodigo = new pratosDAO();
+    int codigo = persistenciaCodigo.getCodigo();    
+    Infra infra = new Infra();
     private void adicionarPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adicionarPedidoMouseClicked
         // TODO add your handling code here:
+        
+        infra.abrirConexao();
+        for(int item = 0; item< pedido.getPratos().size();item++){
+                    String nome  = pedido.getPratos().get(item).getNome();
+                    int quantidade = (pedido.getPratos().get(item).getQuantidade())-1;
+                    pedido.getPratos().get(item).setQuantidade(quantidade);
+                    
+            try {
+                persistenciaCodigo.insert_prato(nome,codigo, pedido.getSenha());
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaPedido.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                 }
+        infra.fecharConexao();
         adicionarPedido.setIcon(botao_MaisPedido);
         novo.inicial();
+        
     }//GEN-LAST:event_adicionarPedidoMouseClicked
 
     private void adicionarPedidoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adicionarPedidoMouseEntered

@@ -19,7 +19,7 @@ public class Infra {
     private static String senha = "admin";
     private static Connection conn = null;
     
-    Infra(){}
+    public Infra(){}
     
     public static void abrirConexao(){
         try{
