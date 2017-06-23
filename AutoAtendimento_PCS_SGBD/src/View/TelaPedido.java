@@ -151,26 +151,9 @@ public class TelaPedido extends javax.swing.JFrame {
     private void gerarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerarPedidoActionPerformed
         novo.gerarPedido();
     }//GEN-LAST:event_gerarPedidoActionPerformed
-    pratosDAO persistenciaCodigo = new pratosDAO();
-    int codigo = persistenciaCodigo.getCodigo();    
-    Infra infra = new Infra();
+    
     private void adicionarPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adicionarPedidoMouseClicked
         // TODO add your handling code here:
-        
-        infra.abrirConexao();
-        for(int item = 0; item< pedido.getPratos().size();item++){
-                    String nome  = pedido.getPratos().get(item).getNome();
-                    int quantidade = (pedido.getPratos().get(item).getQuantidade())-1;
-                    pedido.getPratos().get(item).setQuantidade(quantidade);
-                    
-            try {
-                persistenciaCodigo.insert_prato(nome,codigo, pedido.getSenha());
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(TelaPedido.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                 }
-        infra.fecharConexao();
         adicionarPedido.setIcon(botao_MaisPedido);
         novo.inicial();
         

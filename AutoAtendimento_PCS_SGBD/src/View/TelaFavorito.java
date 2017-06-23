@@ -203,7 +203,7 @@ public class TelaFavorito extends javax.swing.JFrame {
     private void proximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximoActionPerformed
         // TODO add your handling code here:
         ControleFavorito.proximo(escolha.getText());
-
+        
     }//GEN-LAST:event_proximoActionPerformed
 
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
@@ -219,12 +219,12 @@ public class TelaFavorito extends javax.swing.JFrame {
     }//GEN-LAST:event_escolhaActionPerformed
 
     private void lasanhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lasanhaActionPerformed
-      escolha.setText(ControleFavorito.selecao(0));
-       desativar();
+      escolha.setText("Lasanha");
+      desativar();
     }//GEN-LAST:event_lasanhaActionPerformed
 
     private void matricianaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricianaActionPerformed
-       escolha.setText(ControleFavorito.selecao(1));
+       escolha.setText("Penne a Matriciana");
        desativar();
     }//GEN-LAST:event_matricianaActionPerformed
 

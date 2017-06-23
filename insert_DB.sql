@@ -3,14 +3,15 @@
                 preco FLOAT NOT NULL,
                 quantidade INTEGER NOT NULL,
                 tipo VARCHAR(30) NOT NULL
+                
 );
 
 
 CREATE TABLE componentes (
 		id SERIAL PRIMARY KEY,
                 senha_componente INTEGER NOT NULL,
-                nome_componente VARCHAR(30) NOT NULL
-                
+                nome_componente VARCHAR(30)NOT NULL,
+                FOREIGN KEY (nome_componente) REFERENCES produto(nome)
 );
 
 
@@ -138,9 +139,9 @@ insert into produto(nome, preco, quantidade, tipo)
 values('Cappelletti de Carne', 20, 100, 'massa');
 insert into produto(nome, preco, quantidade, tipo)
 values('Cappelletti de Frango', 20, 100, 'massa');
-select * from produto;
+select * from produto where tipo = 'bebida';
 select * from componentes;
 select * from pedido;
 SELECT * FROM pedido ORDER BY senha_pedido DESC LIMIT 1;
-drop table pedido;
-drop table componentes;
+--drop table pedido;
+--drop table componentes;

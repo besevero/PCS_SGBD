@@ -204,12 +204,13 @@ public class TelaPromo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void alhoeoleoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alhoeoleoActionPerformed
-        escolha.setText(ControlePromo.selecao(1));
+        escolha.setText("Spaghetti alho e óleo");
+        
        desativar();
     }//GEN-LAST:event_alhoeoleoActionPerformed
 
     private void carbonaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carbonaraActionPerformed
-        escolha.setText(ControlePromo.selecao(0));
+        escolha.setText("Penne a Carbonara");
         desativar();
        
        

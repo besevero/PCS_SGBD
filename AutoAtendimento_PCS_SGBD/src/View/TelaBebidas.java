@@ -287,19 +287,20 @@ public class TelaBebidas extends javax.swing.JFrame {
 
     private void cocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cocaActionPerformed
         // TODO add your handling code here:
-        escolhaBebida.setText("Coca-Cola");
+        escolhaBebida.setText("Coca-cola");
         desativar();
     }//GEN-LAST:event_cocaActionPerformed
 
     private void iceTeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iceTeaActionPerformed
         // TODO add your handling code here:
-        escolhaBebida.setText("Ice Tea");
+        escolhaBebida.setText("Ice tea");
         desativar();
     }//GEN-LAST:event_iceTeaActionPerformed
 
     private void laranjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laranjaActionPerformed
         // TODO add your handling code here:
         escolhaBebida.setText("Suco de Laranja");
+        
         desativar();
     }//GEN-LAST:event_laranjaActionPerformed
 
@@ -318,7 +319,7 @@ public class TelaBebidas extends javax.swing.JFrame {
     private void uvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uvaActionPerformed
         // TODO add your handling code here:
         desativar();
-        escolhaBebida.setText("Suco de Uva");
+        escolhaBebida.setText("Suco de uva");
     }//GEN-LAST:event_uvaActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
